@@ -1,6 +1,8 @@
 import gi
+import sys
+sys.path.append(../)
 gi.require_version('Gst', '1.0')
-from gi.repository import Gst
+from gi.repository import Gst, Glib
 import pyds
 
 class ObjectDetection:
@@ -56,7 +58,6 @@ class ObjectDetection:
                     obj_meta = obj_meta.next
             return Gst.PadProbeReturn.OK
 
-        osd_sink_pad = self.os
         osd_sink_pad = self.osd.get_static_pad("sink")
         osd_sink_pad.add_probe(Gst.PadProbeType.BUFFER, osd_sink_pad_buffer_probe, None)
 
@@ -65,9 +66,6 @@ class ObjectDetection:
         # Run the GstMainLoop to keep the pipeline running
         self.main_loop = Gst.MainLoop.new(None, False)
         self.main_loop.run()
-
-    def stop(self):
-        # Stop the pipeline
         self.pipeline.set_state(Gst.State.NULL)
         # Quit the GstMainLoop
         self.main_loop.quit()
