@@ -26,5 +26,13 @@ class ObjectDetection:
         self.sinkpad = self.streammux.get_request_pad("sink_0")
         self.srcpad = self.decoder.get_static_pad("src")
         
+        self.source.set_property('location', self.stream_url)
+        self.pgie.set_property('config-file-path', self.config_file_path)
         
+        self.pipeline.add(self.
+        self.pipeline.add(self.
+        self.pipeline.add(self.
+        self.pipeline.add(self.
+        self.pipeline.add(self.
+        self.pipeline.add(self.
 
