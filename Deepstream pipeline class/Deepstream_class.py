@@ -11,3 +11,6 @@ class ObjectDetection:
     def __init__(self, stream_url, config_file_path):
         self.stream_url = stream_url
         self.config_file_path = config_file_path
+
+        Gst.init(None)
+
