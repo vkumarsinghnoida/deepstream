@@ -1,3 +1,3 @@
 # deepstream
 
-Hello
+A deepstream pipeline class
