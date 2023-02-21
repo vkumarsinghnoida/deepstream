@@ -5,7 +5,7 @@ sys.path.append('../')
 import gi
 gi.require_version('Gst', '1.0')
 from gi.repository import GLib, Gst
-
+import configparser
 import pyds
 
 def bus_call(bus, message, loop):
@@ -23,7 +23,7 @@ def bus_call(bus, message, loop):
     return True
 
 class Pipeline:
-    def __init__(self, file_path, config_file):
+    def __init__(self, file_path, config_file, tracker_config_path):
         Gst.init(None)
 
         self.pipeline = Gst.Pipeline()
@@ -32,6 +32,7 @@ class Pipeline:
         self.decoder = Gst.ElementFactory.make("nvv4l2decoder", "nvv4l2-decoder")
         self.streammux = Gst.ElementFactory.make("nvstreammux", "Stream-muxer")
         self.pgie = Gst.ElementFactory.make("nvinfer", "primary-inference")
+        self.tracker = Gst.ElementFactory.make("nvtracker", "tracker")
         self.nvvidconv = Gst.ElementFactory.make("nvvideoconvert", "convertor")
         self.nvosd = Gst.ElementFactory.make("nvdsosd", "onscreendisplay")
         self.sink = Gst.ElementFactory.make("nveglglessink", "nvvideo-renderer")
@@ -43,12 +44,40 @@ class Pipeline:
         self.streammux.set_property('batch-size', 1)
         self.streammux.set_property('batched-push-timeout', 4000000)
         self.pgie.set_property('config-file-path', config_file)
+ 
+        config = configparser.ConfigParser()
+        config.read(self.tracker_config_path)
+        config.sections()
+
+        for key in config['tracker']:
+            if key == 'tracker-width':
+                tracker_width = config.getint('tracker', key)
+                self.tracker.set_property('tracker-width', tracker_width)
+            if key == 'tracker-height':
+                tracker_height = config.getint('tracker', key)
+                self.tracker.set_property('tracker-height', tracker_height)
+            if key == 'gpu-id':
+                tracker_gpu_id = config.getint('tracker', key)
+                self.tracker.set_property('gpu_id', tracker_gpu_id)
+            if key == 'll-lib-file':
+                tracker_ll_lib_file = config.get('tracker', key)
+                self.tracker.set_property('ll-lib-file', tracker_ll_lib_file)
+            if key == 'll-config-file':
+                tracker_ll_config_file = config.get('tracker', key)
+                self.tracker.set_property('ll-config-file', tracker_ll_config_file)
+            if key == 'enable-batch-process':
+                tracker_enable_batch_process = config.getint('tracker', key)
+                tracker.set_property('enable_batch_process', tracker_enable_batch_process)
+            if key == 'enable-past-frame':
+                tracker_enable_past_frame = config.getint('tracker', key)
+                self.tracker.set_property('enable_past_frame', tracker_enable_past_frame)
 
         self.pipeline.add(self.source)
         self.pipeline.add(self.h264parser)
         self.pipeline.add(self.decoder)
         self.pipeline.add(self.streammux)
         self.pipeline.add(self.pgie)
+        self.pipeline.add(self.tracker)
         self.pipeline.add(self.nvvidconv)
         self.pipeline.add(self.nvosd)
         self.pipeline.add(self.sink)
@@ -61,7 +90,8 @@ class Pipeline:
         self.h264parser.link(self.decoder)
         srcpad.link(sinkpad)
         self.streammux.link(self.pgie)
-        self.pgie.link(self.nvvidconv)
+        self.pgie.link(self.tracker)
+        self.tracker.link(self.nvvidconv)
         self.nvvidconv.link(self.nvosd)
         self.nvosd.link(self.transform)
         self.transform.link(self.sink)
