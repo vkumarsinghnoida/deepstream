@@ -28,14 +28,16 @@ def osd_sink_pad_buffer_probe(pad,info,u_data):
                 break
 
             rect_params = obj_meta.rect_params
-            text_params = obj_meta.text_params
-            text_params.display_text = ""
-            width = int(rect_params.width / 1.5)
-            height = int(rect_params.height / 4)
-            left = rect_params.left
-            top = rect_params.top
-            print(left)
-            print(top)
+            top = int(rect_params.top)
+            left = int(rect_params.left)
+            width = int(rect_params.width)
+            height = int(rect_params.height)
+
+            x1 = left
+            y1 = top
+            x2 = left + width
+            y2 = top + height
+            print(x1, y1, x2, y2)
             obj_meta.rect_params.border_color.set(0.0, 0.0, 1.0, 0.0)
             try: 
                 l_obj=l_obj.next
@@ -51,8 +53,10 @@ def osd_sink_pad_buffer_probe(pad,info,u_data):
 
 def main(args):
     pipeline = Pipeline(args[1], args[2])
+    #pipeline = Pipeline('sample_720p.h264', 'yolov7-tiny-320.txt')
     pipeline.osdsinkpad.add_probe(Gst.PadProbeType.BUFFER, osd_sink_pad_buffer_probe, 0)
     pipeline.run()
 
 if __name__ == '__main__':
     sys.exit(main(sys.argv))
+
