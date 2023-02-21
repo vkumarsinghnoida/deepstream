@@ -9,8 +9,6 @@ from deepstream_class import Pipeline
 import pyds
 
 def osd_sink_pad_buffer_probe(pad,info,u_data):
-    
-
     gst_buffer = info.get_buffer()
     batch_meta = pyds.gst_buffer_get_nvds_batch_meta(hash(gst_buffer))
     l_frame = batch_meta.frame_meta_list
@@ -28,7 +26,7 @@ def osd_sink_pad_buffer_probe(pad,info,u_data):
                 obj_meta=pyds.NvDsObjectMeta.cast(l_obj.data)
             except StopIteration:
                 break
-            obj_counter[obj_meta.class_id] += 1
+
             obj_meta.rect_params.border_color.set(0.0, 0.0, 1.0, 0.0)
             try: 
                 l_obj=l_obj.next
