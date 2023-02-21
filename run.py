@@ -27,6 +27,15 @@ def osd_sink_pad_buffer_probe(pad,info,u_data):
             except StopIteration:
                 break
 
+            rect_params = obj_meta.rect_params
+            text_params = obj_meta.text_params
+            text_params.display_text = ""
+            width = int(rect_params.width / 1.5)
+            height = int(rect_params.height / 4)
+            left = rect_params.left
+            top = rect_params.top
+            print(left)
+            print(top)
             obj_meta.rect_params.border_color.set(0.0, 0.0, 1.0, 0.0)
             try: 
                 l_obj=l_obj.next
