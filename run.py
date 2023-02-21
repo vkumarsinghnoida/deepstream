@@ -5,7 +5,7 @@ sys.path.append('../')
 import gi
 gi.require_version('Gst', '1.0')
 from gi.repository import GLib, Gst
-from deepstream_class import Pipeline 
+from deepstream_class import Pipeline, Pipeline_tracker 
 import pyds
 
 def osd_sink_pad_buffer_probe(pad,info,u_data):
@@ -54,6 +54,12 @@ def osd_sink_pad_buffer_probe(pad,info,u_data):
 def main(args):
     pipeline = Pipeline(args[1], args[2])
     #pipeline = Pipeline('sample_720p.h264', 'yolov7-tiny-320.txt')
+    pipeline.osdsinkpad.add_probe(Gst.PadProbeType.BUFFER, osd_sink_pad_buffer_probe, 0)
+    pipeline.run()
+
+def main2(args):
+    pipeline = Pipeline_tracker(args[1], args[2], args[3])
+    #pipeline = Pipeline('sample_720p.h264', 'yolov7-tiny-320.txt', 'config_tracker.txt')
     pipeline.osdsinkpad.add_probe(Gst.PadProbeType.BUFFER, osd_sink_pad_buffer_probe, 0)
     pipeline.run()
 
