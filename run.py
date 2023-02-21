@@ -10,6 +10,7 @@ import pyds
 
 def main(args):
     pipeline = Pipeline(args[1], args[2])
+    pipeline.osdsinkpad.add_probe(Gst.PadProbeType.BUFFER, osd_sink_pad_buffer_probe, 0)
     pipeline.run()
 
 if __name__ == '__main__':
