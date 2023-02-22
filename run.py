@@ -63,6 +63,13 @@ def main2(args):
     pipeline.osdsinkpad.add_probe(Gst.PadProbeType.BUFFER, osd_sink_pad_buffer_probe, 0)
     pipeline.run()
 
+def main3(args):
+    pipeline = VideoPipeline(args[1])
+    #pipeline = VideoPipeline('yolov7-tiny-320.txt')
+    pipeline.osdsinkpad.add_probe(Gst.PadProbeType.BUFFER, osd_sink_pad_buffer_probe, 0)
+    pipeline.run()
+
+
 if __name__ == '__main__':
     sys.exit(main(sys.argv))
 
