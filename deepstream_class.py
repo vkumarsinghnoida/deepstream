@@ -214,7 +214,7 @@ class Pipeline_tracker:
         self.pgie.set_property('config-file-path', config_file)
  
         config = configparser.ConfigParser()
-        config.read(self.tracker_config_path)
+        config.read(tracker_config_path)
         config.sections()
 
         for key in config['tracker']:
@@ -235,7 +235,7 @@ class Pipeline_tracker:
                 self.tracker.set_property('ll-config-file', tracker_ll_config_file)
             if key == 'enable-batch-process':
                 tracker_enable_batch_process = config.getint('tracker', key)
-                tracker.set_property('enable_batch_process', tracker_enable_batch_process)
+                self.tracker.set_property('enable_batch_process', tracker_enable_batch_process)
             if key == 'enable-past-frame':
                 tracker_enable_past_frame = config.getint('tracker', key)
                 self.tracker.set_property('enable_past_frame', tracker_enable_past_frame)
