@@ -118,6 +118,62 @@ class Pipeline:
 
         self.pipeline.set_state(Gst.State.NULL)
 
+class VideoPipeline:
+    def __init__(self, pgie_config):
+        Gst.init(None)
+
+        self.pipeline = Gst.Pipeline()
+
+        self.source = Gst.ElementFactory.make("v4l2src", "usb-cam-source")
+        self.caps_v4l2src = Gst.ElementFactory.make("capsfilter", "v4l2src_caps")
+        self.vidconvsrc = Gst.ElementFactory.make("videoconvert", "convertor_src1")
+        self.nvvidconvsrc = Gst.ElementFactory.make("nvvideoconvert", "convertor_src2")
+        self.caps_vidconvsrc = Gst.ElementFactory.make("capsfilter", "nvmm_caps")
+        self.streammux = Gst.ElementFactory.make("nvstreammux", "Stream-muxer")
+        self.pgie = Gst.ElementFactory.make("nvinfer", "primary-inference")
+        self.nvvidconv = Gst.ElementFactory.make("nvvideoconvert", "convertor")
+        self.nvosd = Gst.ElementFactory.make("nvdsosd", "onscreendisplay")
+        self.transform = Gst.ElementFactory.make("nvegltransform", "nvegl-transform")
+        self.sink = Gst.ElementFactory.make("nveglglessink", "nvvideo-renderer")
+
+
+        self.caps_v4l2src.set_property('caps', Gst.Caps.from_string("video/x-raw, framerate=30/1"))
+        self.caps_vidconvsrc.set_property('caps', Gst.Caps.from_string("video/x-raw(memory:NVMM)"))
+        self.source.set_property('device', /dev/video0)
+        self.streammux.set_property('width', 1920)
+        self.streammux.set_property('height', 1080)
+        self.streammux.set_property('batch-size', 1)
+        self.streammux.set_property('batched-push-timeout', 4000000)
+        self.pgie.set_property('config-file-path', pgie_config)
+        self.sink.set_property('sync', False)
+
+        self.pipeline.add(self.source)
+        self.pipeline.add(self.caps_v4l2src)
+        self.pipeline.add(self.vidconvsrc)
+        self.pipeline.add(self.nvvidconvsrc)
+        self.pipeline.add(self.caps_vidconvsrc)
+        self.pipeline.add(self.streammux)
+        self.pipeline.add(self.pgie)
+        self.pipeline.add(self.nvvidconv)
+        self.pipeline.add(self.nvosd)
+        self.pipeline.add(self.sink)
+        self.pipeline.add(self.transform)
+
+        self.source.link(self.caps_v4l2src)
+        self.caps_v4l2src.link(self.vidconvsrc)
+        self.vidconvsrc.link(self.nvvidconvsrc)
+        self.nvvidconvsrc.link(self.caps_vidconvsrc)
+        sinkpad = self.streammux.get_request_pad("sink_0")
+        srcpad = self.caps_vidconvsrc.get_static_pad("src")
+        srcpad.link(sinkpad)
+        self.streammux.link(self.pgie)
+        self.pgie.link(self.nvvidconv)
+        self.nvvidconv.link(self.nvosd)
+        self.nvosd.link(self.transform)
+        self.transform.link(self.sink)
+
+        self.osdsinkpad = self.nvosd.get_static_pad("sink")
+
 class Pipeline_tracker:
     def __init__(self, file_path, config_file, tracker_config_path):
         Gst.init(None)
