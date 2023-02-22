@@ -174,6 +174,22 @@ class VideoPipeline:
 
         self.osdsinkpad = self.nvosd.get_static_pad("sink")
 
+    def run(self):
+
+        self.pipeline.set_state(Gst.State.PLAYING)
+
+        self.loop = GLib.MainLoop()
+        bus = self.pipeline.get_bus()
+        bus.add_signal_watch()
+        bus.connect ("message", bus_call, self.loop)
+
+        try:
+            self.loop.run()
+        except:
+            pass
+
+        self.pipeline.set_state(Gst.State.NULL)
+
 class Pipeline_tracker:
     def __init__(self, file_path, config_file, tracker_config_path):
         Gst.init(None)
