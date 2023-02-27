@@ -119,7 +119,7 @@ class Pipeline:
         self.pipeline.set_state(Gst.State.NULL)
 
 class VideoPipeline:
-    def __init__(self, pgie_config):
+    def __init__(self, pgie_config, device):
         Gst.init(None)
 
         self.pipeline = Gst.Pipeline()
@@ -139,7 +139,7 @@ class VideoPipeline:
 
         self.caps_v4l2src.set_property('caps', Gst.Caps.from_string("video/x-raw, framerate=30/1"))
         self.caps_vidconvsrc.set_property('caps', Gst.Caps.from_string("video/x-raw(memory:NVMM)"))
-        self.source.set_property('device', /dev/video0)
+        self.source.set_property('device', device)
         self.streammux.set_property('width', 1920)
         self.streammux.set_property('height', 1080)
         self.streammux.set_property('batch-size', 1)
