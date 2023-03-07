@@ -16,7 +16,7 @@ class MySubscriber(Node):
             String,
             'my_topic',
             self.listener_callback,
-            10
+            0
         )
         self.subscription
 
