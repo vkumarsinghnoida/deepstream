@@ -5,8 +5,9 @@ import math
 
 aperturex = 47.936
 aperturey = 26.964
-resx = 1280
-resy = 720
+
+tanx = math.tan(math.radians(aperturex))
+tany = math.tan(math.radians(aperturey))
 
 class MySubscriber(Node):
     def __init__(self):
@@ -20,10 +21,13 @@ class MySubscriber(Node):
         self.subscription
 
     def listener_callback(self, msg):
+        global tanx, tany
         x1, x2, y1, y2 = map(int, msg.data.split(','))
         x = (x1 + x2) / 2
-        y = (y1 + y2) / 2
-        print(angle)
+        y = (y1 + y2) / 2 
+        anglex = math.degrees(math.arctan(tanx*(x/1280)))
+        angley = math.degrees(math.arctan(tany*(y/720)))
+        print(anglex, angley)
         #self.get_logger().info('Received message: %s' % msg.data)
 
 
