@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import String
+#from std_msgs.msg import Int64MultiArray
 import sys
 sys.path.append('../')
 import gi
@@ -122,7 +122,7 @@ class Pipeline:
         self.pipeline.set_state(Gst.State.NULL)
 
 class VideoPipeline:
-    def __init__(self, pgie_config, device):
+    def __init__(self, pgie_config, device, tracker_config_path):
         Gst.init(None)
 
         self.pipeline = Gst.Pipeline()
@@ -207,6 +207,7 @@ class VideoPipeline:
         self.transform.link(self.sink)
 
         self.osdsinkpad = self.nvosd.get_static_pad("sink")
+
 
     def run(self):
 
@@ -225,8 +226,56 @@ class VideoPipeline:
         self.pipeline.set_state(Gst.State.NULL)
 
 class NodePipeline(Node):
-    def __init__(self, pgie_config, device):
+    def osd_sink_pad_buffer_probe(self, pad,info,u_data):
+        msg = String()
+       # bounding_box = BoundingBox2D()
+        gst_buffer = info.get_buffer()
+        batch_meta = pyds.gst_buffer_get_nvds_batch_meta(hash(gst_buffer))
+        l_frame = batch_meta.frame_meta_list
+        while l_frame is not None:
+            try:
+                frame_meta = pyds.NvDsFrameMeta.cast(l_frame.data)
+            except StopIteration:
+                break
+     
+            l_obj=frame_meta.obj_meta_list
+            while l_obj is not None:
+                try:
+                    obj_meta=pyds.NvDsObjectMeta.cast(l_obj.data)
+                    rect_params = obj_meta.rect_params
+                    top = int(rect_params.top)
+                    left = int(rect_params.left)
+                    width = int(rect_params.width)
+                    height = int(rect_params.height)
+
+                    x1 = int(left)
+                    y1 = int(top)
+                    x2 = int(left + width)
+                    y2 = int(top + height)
+                    if obj_meta.class_id == 0: 
+                        result = str(x1) + ", " + str(x2) + ", " + str(y1) + ", " + str(y2)
+                        msg.data = result
+                        self.publisher_.publish(msg)
+          
+                except StopIteration:
+                    break
+                obj_meta.rect_params.border_color.set(0.0, 0.0, 1.0, 0.0)
+                try: 
+                    l_obj=l_obj.next
+                except StopIteration:
+                    break
+
+            try:
+                l_frame=l_frame.next
+            except StopIteration:
+                break
+			
+        return Gst.PadProbeReturn.OK
+
+
+    def __init__(self, pgie_config, device, tracker_config_path):
         super().__init__('inference_publisher')
+        self.publisher_ = self.create_publisher(String, 'topic', 0)
         Gst.init(None)
 
         self.pipeline = Gst.Pipeline()
@@ -311,6 +360,7 @@ class NodePipeline(Node):
         self.transform.link(self.sink)
 
         self.osdsinkpad = self.nvosd.get_static_pad("sink")
+        self.osdsinkpad.add_probe(Gst.PadProbeType.BUFFER, self.osd_sink_pad_buffer_probe, 0)
 
     def run(self):
 
