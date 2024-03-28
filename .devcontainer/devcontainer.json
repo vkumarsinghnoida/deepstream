@@ -17,9 +17,21 @@
                         "moby": true,
                         "azureDnsAutoDetection": true,
                         "installDockerBuildx": true,
+                        "installDockerComposeSwitch": true,
                         "version": "latest",
-                        "dockerDashComposeVersion": "v2"
+                        "dockerDashComposeVersion": "latest"
                 },
+                "ghcr.io/devcontainers/features/desktop-lite:1": {
+                        "version": "latest",
+                        "noVncVersion": "1.2.0",
+                        "password": "vscode",
+                        "webPort": "6080",
+                        "vncPort": "5901"
+                },
+                "ghcr.io/devcontainers/features/sshd:1": {
+                                "version": "latest"
+                                    }
+                
 
         },
 
@@ -27,7 +39,7 @@
         // "features": {},
 
         // Use 'forwardPorts' to make a list of ports inside the container available locally.
-        // "forwardPorts": [],
+        "forwardPorts": [11311, 6080, 5901]
 
         // Use 'postCreateCommand' to run commands after the container is created.
 //   "postCreateCommand": "pip install -r requirements.txt",
