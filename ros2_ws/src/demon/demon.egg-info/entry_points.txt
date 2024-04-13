@@ -1,4 +1,0 @@
-[console_scripts]
-listener = demon.listener:main
-talker = demon.talker:main
-
