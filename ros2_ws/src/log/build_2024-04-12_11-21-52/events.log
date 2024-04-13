@@ -1,0 +1,52 @@
+[0.000000] (-) TimerEvent: {}
+[0.000257] (demon) JobQueued: {'identifier': 'demon', 'dependencies': OrderedDict()}
+[0.000339] (demon) JobStarted: {'identifier': 'demon'}
+[0.099155] (-) TimerEvent: {}
+[0.199361] (-) TimerEvent: {}
+[0.299600] (-) TimerEvent: {}
+[0.399825] (-) TimerEvent: {}
+[0.500115] (-) TimerEvent: {}
+[0.600451] (-) TimerEvent: {}
+[0.700754] (-) TimerEvent: {}
+[0.784557] (demon) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'egg_info', '--egg-base', '../build/demon', 'build', '--build-base', '/workspaces/deepstream/ros2_ws/src/build/demon/build', 'install', '--record', '/workspaces/deepstream/ros2_ws/src/build/demon/install.log', '--single-version-externally-managed'], 'cwd': '/workspaces/deepstream/ros2_ws/src/demon', 'env': {'GITHUB_TOKEN': 'ghu_hoY2o5rv1Kjxi1dMPwm4y6zjpckI0n3hdqqD', 'DOCKER_BUILDKIT': '1', 'GITHUB_CODESPACE_TOKEN': 'AUFHPYAXAC6QWSETP7J5DEDGDGOWPANCNFSM4AHIGRYA', 'USER': 'root', 'SSH_CLIENT': '::1 41140 2222', 'GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN': 'app.github.dev', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib', 'MOTD_SHOWN': 'pam', 'HOME': '/root', 'OLDPWD': '/workspaces/deepstream/ros2_ws', 'SSH_TTY': '/dev/pts/0', 'CODESPACES': 'true', 'ROS_PYTHON_VERSION': '3', 'GITHUB_USER': 'vkumarsinghnoida', 'GITHUB_GRAPHQL_URL': 'https://api.github.com/graphql', 'COLCON_PREFIX_PATH': '/workspaces/deepstream/ros2_ws/install', 'ROS_DISTRO': 'humble', 'LOGNAME': 'root', 'ContainerVersion': '13', 'GITHUB_API_URL': 'https://api.github.com', 'RepositoryName': 'deepstream', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'CLOUDENV_ENVIRONMENT_ID': '246f0066-3ff4-49a5-8e16-b8d22da46148', 'TERM': 'xterm-256color', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'SHELL_LOGGED_IN': 'true', 'DISPLAY': ':1', 'LANG': 'C.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'GITHUB_REPOSITORY': 'vkumarsinghnoida/deepstream', 'AMENT_PREFIX_PATH': '/opt/ros/humble', 'SHELL': '/bin/bash', 'PWD': '/workspaces/deepstream/ros2_ws/src/build/demon', 'INTERNAL_VSCS_TARGET_URL': 'https://southeastasia.online.visualstudio.com', 'LC_ALL': 'C.UTF-8', 'SSH_CONNECTION': '::1 41140 ::1 2222', 'GITHUB_SERVER_URL': 'https://github.com', 'PYTHONPATH': '/workspaces/deepstream/ros2_ws/src/build/demon/prefix_override:/workspaces/deepstream/ros2_ws/src/install/demon/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'CODESPACE_NAME': 'automatic-space-palm-tree-w4wjpgggrvrhgqwg', 'COLCON': '1'}, 'shell': False}
+[0.800835] (-) TimerEvent: {}
+[0.901080] (-) TimerEvent: {}
+[0.999890] (demon) StdoutLine: {'line': b'running egg_info\n'}
+[1.000410] (demon) StdoutLine: {'line': b'creating ../build/demon/demon.egg-info\n'}
+[1.000615] (demon) StdoutLine: {'line': b'writing ../build/demon/demon.egg-info/PKG-INFO\n'}
+[1.000838] (demon) StdoutLine: {'line': b'writing dependency_links to ../build/demon/demon.egg-info/dependency_links.txt\n'}
+[1.001008] (demon) StdoutLine: {'line': b'writing entry points to ../build/demon/demon.egg-info/entry_points.txt\n'}
+[1.001137] (-) TimerEvent: {}
+[1.001296] (demon) StdoutLine: {'line': b'writing requirements to ../build/demon/demon.egg-info/requires.txt\n'}
+[1.001560] (demon) StdoutLine: {'line': b'writing top-level names to ../build/demon/demon.egg-info/top_level.txt\n'}
+[1.001813] (demon) StdoutLine: {'line': b"writing manifest file '../build/demon/demon.egg-info/SOURCES.txt'\n"}
+[1.002998] (demon) StdoutLine: {'line': b"reading manifest file '../build/demon/demon.egg-info/SOURCES.txt'\n"}
+[1.003208] (demon) StdoutLine: {'line': b"adding license file 'LICENSE'\n"}
+[1.003866] (demon) StdoutLine: {'line': b"writing manifest file '../build/demon/demon.egg-info/SOURCES.txt'\n"}
+[1.004065] (demon) StdoutLine: {'line': b'running build\n'}
+[1.004393] (demon) StdoutLine: {'line': b'running build_py\n'}
+[1.004576] (demon) StdoutLine: {'line': b'creating /workspaces/deepstream/ros2_ws/src/build/demon/build\n'}
+[1.004805] (demon) StdoutLine: {'line': b'creating /workspaces/deepstream/ros2_ws/src/build/demon/build/lib\n'}
+[1.004944] (demon) StdoutLine: {'line': b'creating /workspaces/deepstream/ros2_ws/src/build/demon/build/lib/demon\n'}
+[1.005090] (demon) StdoutLine: {'line': b'copying demon/__init__.py -> /workspaces/deepstream/ros2_ws/src/build/demon/build/lib/demon\n'}
+[1.005168] (demon) StdoutLine: {'line': b'running install\n'}
+[1.005239] (demon) StderrLine: {'line': b'/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.\n'}
+[1.005383] (demon) StderrLine: {'line': b'  warnings.warn(\n'}
+[1.005506] (demon) StdoutLine: {'line': b'running install_lib\n'}
+[1.006022] (demon) StdoutLine: {'line': b'creating /workspaces/deepstream/ros2_ws/src/install/demon/lib/python3.10/site-packages/demon\n'}
+[1.006178] (demon) StdoutLine: {'line': b'copying /workspaces/deepstream/ros2_ws/src/build/demon/build/lib/demon/__init__.py -> /workspaces/deepstream/ros2_ws/src/install/demon/lib/python3.10/site-packages/demon\n'}
+[1.006686] (demon) StdoutLine: {'line': b'byte-compiling /workspaces/deepstream/ros2_ws/src/install/demon/lib/python3.10/site-packages/demon/__init__.py to __init__.cpython-310.pyc\n'}
+[1.007057] (demon) StdoutLine: {'line': b'running install_data\n'}
+[1.007519] (demon) StdoutLine: {'line': b'creating /workspaces/deepstream/ros2_ws/src/install/demon/share/ament_index\n'}
+[1.007747] (demon) StdoutLine: {'line': b'creating /workspaces/deepstream/ros2_ws/src/install/demon/share/ament_index/resource_index\n'}
+[1.007935] (demon) StdoutLine: {'line': b'creating /workspaces/deepstream/ros2_ws/src/install/demon/share/ament_index/resource_index/packages\n'}
+[1.008117] (demon) StdoutLine: {'line': b'copying resource/demon -> /workspaces/deepstream/ros2_ws/src/install/demon/share/ament_index/resource_index/packages\n'}
+[1.008278] (demon) StdoutLine: {'line': b'copying package.xml -> /workspaces/deepstream/ros2_ws/src/install/demon/share/demon\n'}
+[1.008421] (demon) StdoutLine: {'line': b'running install_egg_info\n'}
+[1.009880] (demon) StdoutLine: {'line': b'Copying ../build/demon/demon.egg-info to /workspaces/deepstream/ros2_ws/src/install/demon/lib/python3.10/site-packages/demon-0.0.0-py3.10.egg-info\n'}
+[1.011175] (demon) StdoutLine: {'line': b'running install_scripts\n'}
+[1.029455] (demon) StdoutLine: {'line': b"writing list of installed files to '/workspaces/deepstream/ros2_ws/src/build/demon/install.log'\n"}
+[1.047758] (demon) CommandEnded: {'returncode': 0}
+[1.101229] (-) TimerEvent: {}
+[1.107449] (demon) JobEnded: {'identifier': 'demon', 'rc': 0}
+[1.108339] (-) EventReactorShutdown: {}

@@ -1,0 +1,15 @@
+package.xml
+setup.cfg
+setup.py
+../../build/demon/demon.egg-info/PKG-INFO
+../../build/demon/demon.egg-info/SOURCES.txt
+../../build/demon/demon.egg-info/dependency_links.txt
+../../build/demon/demon.egg-info/entry_points.txt
+../../build/demon/demon.egg-info/requires.txt
+../../build/demon/demon.egg-info/top_level.txt
+../../build/demon/demon.egg-info/zip-safe
+demon/__init__.py
+resource/demon
+test/test_copyright.py
+test/test_flake8.py
+test/test_pep257.py

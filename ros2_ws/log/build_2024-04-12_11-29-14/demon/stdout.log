@@ -1,0 +1,31 @@
+running egg_info
+creating ../../build/demon/demon.egg-info
+writing ../../build/demon/demon.egg-info/PKG-INFO
+writing dependency_links to ../../build/demon/demon.egg-info/dependency_links.txt
+writing entry points to ../../build/demon/demon.egg-info/entry_points.txt
+writing requirements to ../../build/demon/demon.egg-info/requires.txt
+writing top-level names to ../../build/demon/demon.egg-info/top_level.txt
+writing manifest file '../../build/demon/demon.egg-info/SOURCES.txt'
+reading manifest file '../../build/demon/demon.egg-info/SOURCES.txt'
+writing manifest file '../../build/demon/demon.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /workspaces/deepstream/ros2_ws/build/demon/build
+creating /workspaces/deepstream/ros2_ws/build/demon/build/lib
+creating /workspaces/deepstream/ros2_ws/build/demon/build/lib/demon
+copying demon/__init__.py -> /workspaces/deepstream/ros2_ws/build/demon/build/lib/demon
+running install
+running install_lib
+creating /workspaces/deepstream/ros2_ws/install/demon/lib/python3.10/site-packages/demon
+copying /workspaces/deepstream/ros2_ws/build/demon/build/lib/demon/__init__.py -> /workspaces/deepstream/ros2_ws/install/demon/lib/python3.10/site-packages/demon
+byte-compiling /workspaces/deepstream/ros2_ws/install/demon/lib/python3.10/site-packages/demon/__init__.py to __init__.cpython-310.pyc
+running install_data
+creating /workspaces/deepstream/ros2_ws/install/demon/share/ament_index
+creating /workspaces/deepstream/ros2_ws/install/demon/share/ament_index/resource_index
+creating /workspaces/deepstream/ros2_ws/install/demon/share/ament_index/resource_index/packages
+copying resource/demon -> /workspaces/deepstream/ros2_ws/install/demon/share/ament_index/resource_index/packages
+copying package.xml -> /workspaces/deepstream/ros2_ws/install/demon/share/demon
+running install_egg_info
+Copying ../../build/demon/demon.egg-info to /workspaces/deepstream/ros2_ws/install/demon/lib/python3.10/site-packages/demon-0.0.0-py3.10.egg-info
+running install_scripts
+writing list of installed files to '/workspaces/deepstream/ros2_ws/build/demon/install.log'

@@ -1,0 +1,22 @@
+[0.673s] Invoking command in '/workspaces/deepstream/ros2_ws/src/demon': PYTHONPATH=/workspaces/deepstream/ros2_ws/build/demon/prefix_override:/workspaces/deepstream/ros2_ws/install/demon/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/demon build --build-base /workspaces/deepstream/ros2_ws/build/demon/build install --record /workspaces/deepstream/ros2_ws/build/demon/install.log --single-version-externally-managed
+[0.886s] running egg_info
+[0.886s] writing ../../build/demon/demon.egg-info/PKG-INFO
+[0.886s] writing dependency_links to ../../build/demon/demon.egg-info/dependency_links.txt
+[0.887s] writing entry points to ../../build/demon/demon.egg-info/entry_points.txt
+[0.887s] deleting ../../build/demon/demon.egg-info/requires.txt
+[0.887s] writing top-level names to ../../build/demon/demon.egg-info/top_level.txt
+[0.888s] reading manifest file '../../build/demon/demon.egg-info/SOURCES.txt'
+[0.889s] writing manifest file '../../build/demon/demon.egg-info/SOURCES.txt'
+[0.889s] running build
+[0.889s] running build_py
+[0.890s] running install
+[0.890s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[0.890s]   warnings.warn(
+[0.890s] running install_lib
+[0.891s] running install_data
+[0.892s] running install_egg_info
+[0.893s] removing '/workspaces/deepstream/ros2_ws/install/demon/lib/python3.10/site-packages/demon-0.0.0-py3.10.egg-info' (and everything under it)
+[0.894s] Copying ../../build/demon/demon.egg-info to /workspaces/deepstream/ros2_ws/install/demon/lib/python3.10/site-packages/demon-0.0.0-py3.10.egg-info
+[0.895s] running install_scripts
+[0.913s] writing list of installed files to '/workspaces/deepstream/ros2_ws/build/demon/install.log'
+[0.930s] Invoked command in '/workspaces/deepstream/ros2_ws/src/demon' returned '0': PYTHONPATH=/workspaces/deepstream/ros2_ws/build/demon/prefix_override:/workspaces/deepstream/ros2_ws/install/demon/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/demon build --build-base /workspaces/deepstream/ros2_ws/build/demon/build install --record /workspaces/deepstream/ros2_ws/build/demon/install.log --single-version-externally-managed
