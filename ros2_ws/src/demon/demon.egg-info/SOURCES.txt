@@ -2,6 +2,8 @@ package.xml
 setup.cfg
 setup.py
 demon/__init__.py
+demon/listener.py
+demon/talker.py
 demon.egg-info/PKG-INFO
 demon.egg-info/SOURCES.txt
 demon.egg-info/dependency_links.txt

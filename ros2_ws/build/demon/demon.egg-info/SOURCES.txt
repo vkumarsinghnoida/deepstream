@@ -9,6 +9,8 @@ setup.py
 ../../build/demon/demon.egg-info/top_level.txt
 ../../build/demon/demon.egg-info/zip-safe
 demon/__init__.py
+demon/listener.py
+demon/talker.py
 resource/demon
 test/test_copyright.py
 test/test_flake8.py
