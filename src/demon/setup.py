@@ -22,6 +22,7 @@ setup(
         'console_scripts': [
 		'talker = demon.talker:main',
 		'listener = demon.listener:main',
+		'input = demon.input:main',
         ],
     },
 )
