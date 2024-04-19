@@ -1,0 +1,11 @@
+launch:
+
+- node:
+    pkg: "demon"
+    exec: "talker"
+    name: "lower_func"
+
+- node:
+    pkg: "demon"
+    exec: "listener"
+    name: "lower_fun"

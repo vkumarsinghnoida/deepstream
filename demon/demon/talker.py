@@ -1,4 +1,4 @@
-'''
+
 
 import rclpy
 from rclpy.node import Node
@@ -50,12 +50,13 @@ from std_msgs.msg import String
 
 class MinimalPublisher(Node):
 
-    def __init__(self):
-        super().__init__('minimal_publisher')
+    def __init__(self, a):
+        super().__init__('minimal_publisher', allow_undeclared_parameters=True)
         self.publisher_ = self.create_publisher(String, 'topic', 10)
+        # self.declare_parameter(bis, '')
         while True:
             msg = String()
-            msg.data = input("lowercaser ")
+            msg.data = input("lower ") + a
             self.publisher_.publish(msg)
             self.get_logger().info('Publishing: "%s"' % msg.data)
 
@@ -63,7 +64,7 @@ class MinimalPublisher(Node):
 def main(args=None):
     rclpy.init(args=args)
 
-    minimal_publisher = MinimalPublisher()
+    minimal_publisher = MinimalPublisher('hello')
 
     rclpy.spin(minimal_publisher)
 
@@ -73,3 +74,5 @@ def main(args=None):
 
 if __name__ == '__main__':
     main()
+
+'''
