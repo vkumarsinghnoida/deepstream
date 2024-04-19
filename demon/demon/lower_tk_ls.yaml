@@ -1,6 +1,0 @@
-launch:
-
-- node:
-    pkg: "demon"
-    exec: "talker"
-    name: "lower_func"
