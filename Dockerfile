@@ -39,4 +39,10 @@ RUN echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc && \
     echo "source /root/ros2_ws/install/setup.bash" >> ~/.bashrc
 
 # Set the default command to launch the demon package
-CMD ["/bin/bash", "-c", "source /root/ros2_ws/install/setup.bash && ros2 launch demon lower_tk_ls.yaml"]
+#CMD ["/bin/bash", "-c", "source /root/ros2_ws/install/setup.bash && ros2 launch demon lower_tk_ls.yaml"]
+
+# Copy the entry point script into the container
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+
+# Set the entry point script as the entry point
+ENTRYPOINT ["entrypoint.sh"]
