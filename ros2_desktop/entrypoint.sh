@@ -314,25 +314,34 @@ Name[uk]=Відкрити нове вікно у потайливому режи
 Name[zh_TW]=開啟新隱私瀏覽視窗
 Exec=firefox -private-window
 EOF
-cat <<EOF >$HOME/Desktop/codium.desktop
+cat <<EOF >$HOME/Desktop/code.desktop
 [Desktop Entry]
-Name=VSCodium
+Name=Visual Studio Code
 Comment=Code Editing. Redefined.
 GenericName=Text Editor
-Exec=/usr/share/codium/codium --unity-launch %F
-Icon=vscodium
+Exec=/usr/share/code/code %F
+Icon=vscode
 Type=Application
 StartupNotify=false
-StartupWMClass=VSCodium
+StartupWMClass=Code
 Categories=TextEditor;Development;IDE;
-MimeType=text/plain;inode/directory;application/x-codium-workspace;
+MimeType=application/x-code-workspace;
 Actions=new-empty-window;
 Keywords=vscode;
 
 [Desktop Action new-empty-window]
 Name=New Empty Window
-Exec=/usr/share/codium/codium --new-window %F
-Icon=vscodium
+Name[de]=Neues leeres Fenster
+Name[es]=Nueva ventana vacía
+Name[fr]=Nouvelle fenêtre vide
+Name[it]=Nuova finestra vuota
+Name[ja]=新しい空のウィンドウ
+Name[ko]=새 빈 창
+Name[ru]=Новое пустое окно
+Name[zh_CN]=新建空窗口
+Name[zh_TW]=開新空視窗
+Exec=/usr/share/code/code --new-window %F
+Icon=vscode
 EOF
 chown -R $USER:$USER $HOME/Desktop
 

@@ -21,13 +21,13 @@
                         "version": "latest",
                         "dockerDashComposeVersion": "latest"
                 },
-                "ghcr.io/devcontainers/features/desktop-lite:1": {
-                        "version": "latest",
-                        "noVncVersion": "1.2.0",
-                        "password": "ubuntu",
-                        "webPort": "6080",
-                        "vncPort": "5900"
-                },
+//                "ghcr.io/devcontainers/features/desktop-lite:1": {
+  //                      "version": "latest",
+    //                    "noVncVersion": "1.2.0",
+      //                  "password": "ubuntu",
+        //                "webPort": "6080",
+          //              "vncPort": "5900"
+            //    },
                 "ghcr.io/devcontainers/features/sshd:1": {
                                 "version": "latest"
                                     }
