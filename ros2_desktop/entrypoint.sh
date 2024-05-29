@@ -72,7 +72,7 @@ chown -R $USER:$USER $HOME/.ros
 
 # Add terminator shortcut
 mkdir -p $HOME/Desktop
-cat <<EOF >$HOME/Desktop/terminator.desktop
+cat <<EOF >$HOME/terminator.desktop
 [Desktop Entry]
 Name=Terminator
 Comment=Multiple terminals in one window
@@ -90,7 +90,7 @@ Name=Open a New Window
 Exec=terminator
 TargetEnvironment=Unity
 EOF
-cat <<EOF >$HOME/Desktop/firefox.desktop
+cat <<EOF >$HOME/firefox.desktop
 [Desktop Entry]
 Version=1.0
 Name=Firefox Web Browser
@@ -314,7 +314,7 @@ Name[uk]=Відкрити нове вікно у потайливому режи
 Name[zh_TW]=開啟新隱私瀏覽視窗
 Exec=firefox -private-window
 EOF
-cat <<EOF >$HOME/Desktop/code.desktop
+cat <<EOF >$HOME/code.desktop
 [Desktop Entry]
 Name=Visual Studio Code
 Comment=Code Editing. Redefined.
